@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Header() {
+function Header({ user }) {
     return (
         <>
             <div id="anchorHeaderSite" className="h-1 absolute invisible"></div>
@@ -326,49 +326,65 @@ function Header() {
                                                 </path>
                                             </svg></button></div>
                                     </div>
-                                    <div className="hidden xl:block">
-                                        <div className="nc-module-cart">
-                                            <aside className="rb-mini-cart nav-cart is-hover"> <a
-                                                className="rb-cart-link cart-link -- relative xl:w-12 xl:h-12 rounded-full xl:text-neutral-700 xl:dark:text-neutral-300 xl:hover:bg-neutral-100 xl:dark:hover:bg-neutral-800 focus:outline-none flex flex-col items-center justify-between xl:justify-center text-neutral-500 dark:text-neutral-300/90"
-                                                href="https://ncmaz.chisnghiax.com/cart/" title="view_cart"> <span
-                                                    className="cart-icon"> <svg className="w-5 h-5 sm:w-6 sm:h-6"
-                                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001"
-                                                            stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10"
-                                                            strokeLinecap="round" strokeLinejoin="round"></path>
-                                                        <path
-                                                            d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z"
-                                                            stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10"
-                                                            strokeLinecap="round" strokeLinejoin="round"></path>
-                                                        <path
-                                                            d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z"
-                                                            stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10"
-                                                            strokeLinecap="round" strokeLinejoin="round"></path>
-                                                        <path d="M9 8H21" stroke="currentColor" strokeWidth="1.5"
-                                                            strokeMiterlimit="10" strokeLinecap="round"
-                                                            strokeLinejoin="round"></path>
-                                                    </svg> <em className="cart-counter rb-counter"> 0 </em> </span> <span
-                                                        className="block xl:hidden text-[10px] leading-none mt-1"> Cart </span> </a>
-                                                <div className="nav-mini-cart header-lightbox">
-                                                    <div className="mini-cart-wrap">
-                                                        <div className="widget_shopping_cart_content">
-                                                            <div className="woocommerce-mini-cart__empty-message">
-                                                                <p className="nc-wc-mini-cart__emptytext">No products in the cart.
-                                                                </p>
-                                                                <p className="return-to-shop"> <a className="button wc-backward"
-                                                                    href="https://ncmaz.chisnghiax.com/shop/"> Continue
-                                                                    shopping </a></p>
+                                    {user === undefined ?
+                                        <a className="nc-Button signup-modal-btn ml-3 relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm xl:text-base xl:font-medium py-2 px-4 xl:py-3 xl:px-6 ttnc-ButtonPrimary bg-primary-6000 hover:bg-primary-700 text-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0"
+                                            href="#"
+                                            alt="Login"> Sign up </a>
+                                        :
+                                        <div class="ml-2 xl:ml-0.5" data-is-react-component="NavAccountDropdown" data-component-props="{&quot;data&quot;:[{&quot;id&quot;:&quot;menu01&quot;,&quot;name&quot;:&quot;Author page&quot;,&quot;icon&quot;:&quot;las la-user-circle text-xl&quot;,&quot;href&quot;:&quot;https:\/\/ncmaz.chisnghiax.com\/author\/guest\/&quot;},{&quot;id&quot;:&quot;menu1&quot;,&quot;name&quot;:&quot;Submit post&quot;,&quot;icon&quot;:&quot;las la-plus-circle text-xl&quot;,&quot;href&quot;:&quot;\/ncmaz-submission-post-editor\/?action=create&quot;},{&quot;id&quot;:&quot;menu2&quot;,&quot;name&quot;:&quot;Edit profile&quot;,&quot;icon&quot;:&quot;las la-user-edit text-xl&quot;,&quot;href&quot;:&quot;\/ncmaz-account\/?tab=general&quot;}],&quot;footData&quot;:[{&quot;id&quot;:&quot;menuFoot1&quot;,&quot;name&quot;:&quot;Help&quot;,&quot;icon&quot;:&quot;las la-question-circle text-xl&quot;,&quot;href&quot;:&quot;\/#&quot;},{&quot;id&quot;:&quot;menuFoot3&quot;,&quot;name&quot;:&quot;Logout&quot;,&quot;icon&quot;:&quot;las la-sign-out-alt text-xl leading-none&quot;,&quot;href&quot;:&quot;https:\/\/ncmaz.chisnghiax.com\/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fncmaz.chisnghiax.com&amp;_wpnonce=8b1a4bf8f5&quot;}]}">
+                                            <div class="relative inline-block text-left" data-headlessui-state="open">
+                                                <div>
+                                                    <button class="profile-div" id="headlessui-menu-button-:r0:" type="button" aria-haspopup="menu" aria-expanded="true" data-headlessui-state="open" aria-controls="headlessui-menu-items-:r1s:">
+                                                        <div class="flex-shrink-0 w-10 h-10 xl:w-12 xl:h-12 rounded-full text-neutral-700 dark:text-neutral-300 sm:hover:bg-neutral-100 sm:dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center ">
+                                                            <div class="wil-avatar relative flex-shrink-0 inline-flex items-center justify-center overflow-hidden z-0 text-neutral-100 uppercase font-semibold shadow-inner rounded-full h-7 w-7 text-base  ring-2 ring-neutral-200 dark:ring-neutral-700 ring-offset-2">
+                                                                <img class="absolute inset-0 w-full h-full object-cover" src="https://ncmaz.chisnghiax.com/wp-content/uploads/nsl_avatars/391c7202a38da436f7ad41ba42af676b.jpg" sizes="100px" alt="John Doe" loading="lazy" />
+                                                                <span class="wil-avatar__name">J</span>
                                                             </div>
                                                         </div>
+                                                    </button>
+                                                </div>
+                                                <div class="profile-dropdown-custom hidden absolute right-0 w-56 mt-1.5 xl:mt-2.5 origin-top-right bg-white dark:bg-neutral-800 rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-neutral-100 dark:divide-neutral-700 text-sm" aria-labelledby="headlessui-menu-button-:r0:" id="headlessui-menu-items-:r1s:" role="menu" tabindex="0" data-headlessui-state="open">
+                                                    <div class="px-1 py-2" role="none">
+                                                        <a href="https://ncmaz.chisnghiax.com/author/guest/" class="px-3 py-2 flex items-center space-x-3" role="none">
+                                                            <div class="wil-avatar relative flex-shrink-0 inline-flex items-center justify-center overflow-hidden z-0 text-neutral-100 uppercase font-semibold shadow-inner rounded-full h-9 w-9 sm:h-10 sm:w-10 text-base ring-1 ring-white/80 dark:ring-neutral-900" role="none">
+                                                                <img class="absolute inset-0 w-full h-full object-cover" src="https://ncmaz.chisnghiax.com/wp-content/uploads/nsl_avatars/391c7202a38da436f7ad41ba42af676b.jpg" sizes="100px" alt="John Doe" loading="lazy" role="none" />
+                                                                <span class="wil-avatar__name" role="none">J</span>
+                                                            </div>
+                                                            <div class="flex flex-col justify-center text-sm truncate" role="none">
+                                                                <span class="text-base font-medium truncate capitalize leading-tight mb-0.5" role="none">John Doe</span>
+                                                                <span class="text-neutral-500 dark:text-neutral-400 truncate leading-tight" role="none">
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="px-1 py-2" role="none">
+                                                        <a href="https://ncmaz.chisnghiax.com/author/guest/" class="flex items-center rounded-md w-full px-3 py-2 truncate" id="headlessui-menu-item-:r1t:" role="menuitem" tabindex="-1" data-headlessui-state="">
+                                                            <i class="las la-user-circle text-xl mr-1 w-7"></i>
+                                                            <span>Author page</span>
+                                                        </a>
+                                                        <a href="/ncmaz-submission-post-editor/?action=create" class="flex items-center rounded-md w-full px-3 py-2 truncate" id="headlessui-menu-item-:r1u:" role="menuitem" tabindex="-1" data-headlessui-state="">
+                                                            <i class="las la-plus-circle text-xl mr-1 w-7"></i>
+                                                            <span>Submit post</span>
+                                                        </a>
+                                                        <a href="/ncmaz-account/?tab=general" class="flex items-center rounded-md w-full px-3 py-2 truncate" id="headlessui-menu-item-:r1v:" role="menuitem" tabindex="-1" data-headlessui-state="">
+                                                            <i class="las la-user-edit text-xl mr-1 w-7"></i>
+                                                            <span>Edit profile</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="px-1 py-2" role="none">
+                                                        <a href="/#" class="flex items-center rounded-md w-full px-3 py-2 truncate" id="headlessui-menu-item-:r20:" role="menuitem" tabindex="-1" data-headlessui-state="">
+                                                            <i class="las la-question-circle text-xl mr-1 w-7"></i>
+                                                            <span>Help</span>
+                                                        </a>
+                                                        <a href="https://ncmaz.chisnghiax.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fncmaz.chisnghiax.com&amp;_wpnonce=8b1a4bf8f5" class="flex items-center rounded-md w-full px-3 py-2 truncate" id="headlessui-menu-item-:r21:" role="menuitem" tabindex="-1" data-headlessui-state="">
+                                                            <i class="las la-sign-out-alt text-xl leading-none mr-1 w-7"></i>
+                                                            <span>Logout</span>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                            </aside>
+                                            </div>
                                         </div>
-                                    </div> <a data-ncmaz-open-modal="ncmaz-modal-form-sign-in"
-                                        className="nc-Button ml-3 relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm xl:text-base xl:font-medium py-2 px-4 xl:py-3 xl:px-6 ttnc-ButtonPrimary bg-primary-6000 hover:bg-primary-700 text-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0"
-                                        href="https://ncmaz.chisnghiax.com/wp-login.php?redirect_to=https%3A%2F%2Fncmaz.chisnghiax.com"
-                                        alt="Login"> Sign up </a>
+                                    }
                                 </div>
                             </div>
                         </div>
