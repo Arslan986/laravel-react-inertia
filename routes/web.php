@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\{ProfileController, PostController};
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,9 +35,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/{name?}/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/edit/profile/{name?}', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('{name?}/post/create', [PostController::class, 'create'])->name('user.post.create');
+    Route::get('profile/{name?}', [ProfileController::class, 'index'])->name('profile.index');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
 });
 
 require __DIR__.'/auth.php';

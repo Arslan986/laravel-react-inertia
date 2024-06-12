@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ProfileController extends Controller
+class PostController extends Controller
 {
     /**
      * Display the user's profile form.
@@ -21,16 +21,16 @@ class ProfileController extends Controller
     public function index(Request $request, $name): Response
     {
 
-        return Inertia::render('Profile/Index', [
+        return Inertia::render('Post/Create', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
     }
 
-    public function edit(Request $request, $name): Response
+    public function create(Request $request, $name): Response
     {
 
-        return Inertia::render('Profile/Edit', [
+        return Inertia::render('Post/Create', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);

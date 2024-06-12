@@ -35,9 +35,7 @@ export default function Layout({ children, user}) {
     return (
         <>
             <Header user={user} />
-            <main className="ncmaz-myCustomPage pt-10 pb-16 md:py-16 relative overflow-hidden">
-                {children}
-            </main>
+            {children}
             <Footer />
             <div id="site-navigation-mobile" class="hidden fixed inset-0 z-max overflow-y-auto" role="dialog" aria-modal="true">
                 <div class="fixed left-0 top-0 bottom-0 w-full md:w-auto z-max outline-none focus:outline-none">
