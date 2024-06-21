@@ -46,6 +46,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        return redirect()->route('profile.edit', $name = auth()->user()->name);
+        return redirect()->route('profile.edit', $name = auth()->user()->name)
+        ->with('success', 'Register Successfully!')
+        ->with('heading', 'Registration Complete');
     }
 }

@@ -1,7 +1,7 @@
-import './bootstrap';
+// import './bootstrap';
+import '../css/custom.css';
 import '../css/app.css';
 import '../css/style.css';
-import '../css/custom.css';
 
 
 import { createRoot } from 'react-dom/client';
@@ -23,3 +23,5 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+

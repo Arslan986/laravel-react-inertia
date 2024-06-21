@@ -1,5 +1,5 @@
 import Header from '@/Components/Frontend/Partials/Header';
-import { Link, Head, useForm } from '@inertiajs/react';
+import { Link, Head, useForm, usePage } from '@inertiajs/react';
 import HeroSection from '@/Components/Frontend/Home/HeroSection';
 import ExploreLatestArticles from '@/Components/Frontend/Home/ExploreLatestArticles';
 import TheVideos from '@/Components/Frontend/Home/TheVideos';
@@ -7,18 +7,28 @@ import BecomeAuthor from '@/Components/Frontend/Partials/BecomeAuthor';
 import TrendingArticles from '@/Components/Frontend/Home/TrendingArticles';
 import Footer from '@/Components/Frontend/Partials/Footer';
 
+
 import { useEffect } from 'react';
 import InputError from '@/Components/InputError';
 
 
-export default function Layout({ children, user}) {
+export default function Layout({ children, user }) {
+    const { heading, status, success, error } = usePage().props;
 
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         password: '',
         password_confirmation: '',
+        login_email: '',
+        login_password: '',
+        remember: false,
     });
+    $(document).on('click', '.custom-toast-message-close', function () {
+        $('.custom-toast-message ').removeClass('active');
+    })
+
+
 
     useEffect(() => {
         return () => {
@@ -26,14 +36,115 @@ export default function Layout({ children, user}) {
         };
     }, []);
 
+
+
     const submit = (e) => {
         e.preventDefault();
 
         post(route('register'));
     };
+    const login = (e) => {
+        e.preventDefault();
 
+        post(route('login'));
+    };
+    if (heading != null || status != null || success != null || error) {
+        var toastTimeout;
+
+        $(document).on('click', '.custom-toast-message-close', function () {
+            var $toast = $(".custom-toast-message");
+            $toast.fadeOut(400);
+
+            // Clear the timeout if the toast is closed manually
+            clearTimeout(toastTimeout);
+        });
+
+        var $toast = $(".custom-toast-message");
+        $toast.stop().fadeIn(400);
+
+        // Restart progress bar animation
+        var $progressBar = $toast.find(".progress");
+        $progressBar.removeClass("animate");
+        setTimeout(function () {
+            $progressBar.addClass("animate");
+        }, 10);
+
+        // Hide toast after the duration of the animation
+        clearTimeout(toastTimeout); // Clear any existing timeout to avoid multiple timeouts
+        toastTimeout = setTimeout(function () {
+            $toast.fadeOut(400);
+        }, 5000); // match this duration with the animation duration
+    }
     return (
         <>
+
+            {success && (
+                <div class="custom-toast-message toast-success">
+                    <div class="custom-toast-message-content">
+                        <div class="custom-toast-message-icon-bg">
+                            <div class="custom-toast-message-icon">
+                                <i class="fas fa-solid fa-check check"></i>
+
+                            </div>
+                        </div>
+
+                        <div class="message">
+                            {heading && (
+                                <span class="text text-1">{heading}</span>
+                            )}
+                            <span class="text text-2">{success}</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-xmark close custom-toast-message-close"></i>
+
+                    <div class="progress"></div>
+                </div>
+            )}
+            {error && (
+                <div class="custom-toast-message toast-danger">
+                    <div class="custom-toast-message-content">
+                        <div class="custom-toast-message-icon-bg">
+                            <div class="custom-toast-message-icon">
+                                <i class="fas fa-solid fa-xmark check"></i>
+                            </div>
+                        </div>
+
+                        <div class="message">
+                            {heading && (
+                                <span class="text text-1">{heading}</span>
+                            )}
+                            <span class="text text-2">{error}</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-xmark close custom-toast-message-close"></i>
+
+                    <div class="progress"></div>
+                </div>
+            )}
+            {status && (
+                <div class="custom-toast-message toast-info">
+                    <div class="custom-toast-message-content">
+                        <div class="custom-toast-message-icon-bg">
+                            <div class="custom-toast-message-icon">
+                                <i class="fas fa-solid fa-xmark check"></i>
+                            </div>
+                        </div>
+
+                        <div class="message">
+                            {heading && (
+                                <span class="text text-1">{heading}</span>
+                            )}
+                            <span class="text text-2">{status}</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-xmark close custom-toast-message-close"></i>
+
+                    <div class="progress"></div>
+                </div>
+            )}
+
+
+            {/* <button id="showToast">Show Toast</button> */}
             <Header user={user} />
             {children}
             <Footer />
@@ -360,7 +471,7 @@ export default function Layout({ children, user}) {
                                         class="text-neutral-500 block mt-2 text-sm"> Login with demo account: guest / guest
                                     </span>
                                 </div> <button
-                                    class="flex p-2 rounded-full hover:bg-neutral-100  focus:outline-none bg-white bg-opacity-10"
+                                    class="flex p-2 rounded-full hover:bg-neutral-100  focus:outline-none bg-white bg-opacity-10 signin-close-btn"
                                     type="button" data-ncmaz-close-modal="ncmaz-modal-form-sign-in"> <span class="sr-only">
                                         Dissmis </span> <svg class="h-6 w-6 text-neutral-900" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -370,7 +481,7 @@ export default function Layout({ children, user}) {
                             </div>
                             <div class="border-t border-neutral-200 pb-2 mt-6"></div>
                             <div class="mt-6 p-0 space-y-6">
-                                <form class="space-y-6 text-sm" onSubmit={submit}>
+                                <form class="space-y-6 text-sm" onSubmit={login}>
                                     <div class="ncmaz-input relative">
                                         <div class="absolute left-1 top-1/2 transform -translate-y-1/2">
                                             <div class="text-[1.375rem] text-neutral-700 px-4 leading-none"><i
@@ -378,26 +489,31 @@ export default function Layout({ children, user}) {
                                         </div>
 
                                         <input required=""
-                                            onChange={(e) => setData('email', e.target.value)}
+                                            onChange={(e) => setData('login_email', e.target.value)}
                                             class="px-5 h-14 w-full border-2 !border-neutral-200/80 rounded-full placeholder-neutral-500 !bg-transparent text-sm pl-14 focus:border-primary-500 focus:ring-0 font-medium"
-                                            type="text" aria-label="email" placeholder="Email" />
-                                        <InputError message={errors.email} className="mt-2" />
+                                            type="text" aria-label="login_email" placeholder="Email" />
                                     </div>
+                                    <InputError message={errors.login_email} />
                                     <div class="ncmaz-input relative">
                                         <div class="absolute left-1 top-1/2 transform -translate-y-1/2">
                                             <div class="text-[1.375rem] text-neutral-700 px-4 leading-none">
                                                 <i class="las la-lock"></i>
                                             </div>
                                         </div>
-                                        <input value="guest" required="" name="pwd" class="px-5 h-14 w-full border-2 !border-neutral-200/80 rounded-full placeholder-neutral-500
- !bg-transparent text-sm pl-14 focus:border-primary-500 focus:ring-0 font-medium" type="password" aria-label="Password"
-                                            placeholder="Password" />
-                                        <InputError message={errors.password} className="mt-2" />
+                                        <input required="" name="pwd" class="px-5 h-14 w-full border-2 !border-neutral-200/80 rounded-full placeholder-neutral-500
+ !bg-transparent text-sm pl-14 focus:border-primary-500 focus:ring-0 font-medium" type="password" aria-label="login_password"
+                                            placeholder="Password" onChange={(e) => setData('login_password', e.target.value)}
+                                        />
                                     </div>
+                                    <InputError message={errors.login_password} />
                                     <div class="flex items-center justify-between space-x-2 text-sm"> <label
-                                        class="flex items-center space-x-2 md:space-x-3"> <input name="rememberme"
+                                        class="flex items-center space-x-2 md:space-x-3">
+                                        <input
+                                            name="remember"
+                                            checked={data.remember}
+                                            onChange={(e) => setData('remember', e.target.checked)}
                                             class="form-tick appearance-none h-5 md:h-6 w-5 md:w-6 border-2 border-neutral-400 rounded-md checked:bg-quateary checked:border-quateary focus:outline-none focus:ring-quateary text-quateary"
-                                            type="checkbox" value="1" /> <span class="text-neutral-700">Remember</span>
+                                            type="checkbox" /> <span class="text-neutral-700">Remember</span>
                                     </label> <button
                                         class="hover:text-neutral-900 hover:underline focus:outline-none text-sm"
                                         type="button" data-ncmaz-close-modal="ncmaz-modal-form-sign-in"
@@ -481,13 +597,13 @@ export default function Layout({ children, user}) {
                                             value={data.name}
                                             class="px-5 h-14 w-full border-2 !border-neutral-200/80 rounded-full placeholder-neutral-500 !bg-transparent text-sm pl-14 focus:border-primary-500 focus:ring-0 font-medium"
                                             type="text" aria-label="Username or email" placeholder="Name" />
-                                        <InputError message={errors.name} className="mt-2" />
-
                                     </div>
+                                    <InputError message={errors.name} />
+
                                     <div class="ncmaz-input relative">
                                         <div class="absolute left-1 top-1/2 transform -translate-y-1/2">
                                             <div class="text-[1.375rem] text-neutral-700 px-4 leading-none">
-                                                <i class="las la-user"></i>
+                                                <i class="las la-envelope"></i>
                                             </div>
                                         </div>
 
@@ -496,13 +612,13 @@ export default function Layout({ children, user}) {
                                             value={data.email}
                                             class="px-5 h-14 w-full border-2 !border-neutral-200/80 rounded-full placeholder-neutral-500 !bg-transparent text-sm pl-14 focus:border-primary-500 focus:ring-0 font-medium"
                                             type="email" aria-label="email" placeholder="Email" />
-                                        <InputError message={errors.email} className="mt-2" />
-
                                     </div>
+                                    <InputError message={errors.email} />
+
                                     <div class="ncmaz-input relative">
                                         <div class="absolute left-1 top-1/2 transform -translate-y-1/2">
                                             <div class="text-[1.375rem] text-neutral-700 px-4 leading-none">
-                                                <i class="las la-user"></i>
+                                                <i class="las la-lock"></i>
                                             </div>
                                         </div>
 
@@ -511,13 +627,13 @@ export default function Layout({ children, user}) {
                                             value={data.password}
                                             class="px-5 h-14 w-full border-2 !border-neutral-200/80 rounded-full placeholder-neutral-500 !bg-transparent text-sm pl-14 focus:border-primary-500 focus:ring-0 font-medium"
                                             type="password" aria-label="email" placeholder="Password" />
-                                        <InputError message={errors.password} className="mt-2" />
-
                                     </div>
+                                    <InputError message={errors.password} />
+
                                     <div class="ncmaz-input relative">
                                         <div class="absolute left-1 top-1/2 transform -translate-y-1/2">
                                             <div class="text-[1.375rem] text-neutral-700 px-4 leading-none">
-                                                <i class="las la-user"></i>
+                                                <i class="las la-lock"></i>
                                             </div>
                                         </div>
 
@@ -526,9 +642,9 @@ export default function Layout({ children, user}) {
                                             value={data.password_confirmation}
                                             class="px-5 h-14 w-full border-2 !border-neutral-200/80 rounded-full placeholder-neutral-500 !bg-transparent text-sm pl-14 focus:border-primary-500 focus:ring-0 font-medium"
                                             type="password" aria-label="email" placeholder="Confirm Password" />
-                                        <InputError message={errors.password_confirmation} className="mt-2" />
-
                                     </div>
+                                    <InputError message={errors.password_confirmation} />
+
                                     <span class="block text-center text-sm text-neutral-500">Registration confirmation
                                         will be emailed to you.</span> <input type="hidden" name="redirect_to" value="" />
                                     <div>
@@ -570,7 +686,7 @@ export default function Layout({ children, user}) {
                                     </div>
                                 </div>
                                 <div class="text-center text-neutral-800 text-sm"> <span>I'm already a member. </span> <button
-                                    class="underline text-primary-6000 focus:outline-none" type="button"
+                                    class="underline text-primary-6000 focus:outline-none signin-modal-btn" type="button"
                                     data-ncmaz-close-modal="ncmaz-modal-form-sign-up"
                                     data-ncmaz-open-modal="ncmaz-modal-form-sign-in"> Sign in </button></div>
                             </div>

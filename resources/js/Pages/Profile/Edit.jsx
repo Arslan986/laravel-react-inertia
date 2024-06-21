@@ -12,12 +12,12 @@ import InputError from '@/Components/InputError';
 import Layout from '../Layout/Layout';
 
 
-export default function Index({ auth }) {
+export default function Index({ auth, msg, message, message2, iconClasses, iconColorClass }) {
 
 
     return (
         <>
-            <Layout user={auth}>
+            <Layout user={auth} msg={msg} message={message} message2={message2} iconClasses={iconClasses} iconColorClass={iconColorClass} >
                 <main className="ncmaz-myCustomPage pb-16 relative overflow-hidden">
 
                     <div class="relative">

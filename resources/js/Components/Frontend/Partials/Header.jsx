@@ -187,117 +187,6 @@ function Header({ user }) {
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li data-graphql="0" data-item-id="625" data-is-megamenu="false"
-                                                    className="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                                    <a href="#" className="menu-link main-menu-link">Single Formats</a>
-                                                    <div className="sub-menu-wrap">
-                                                        <ul className="sub-menu menu-odd  menu-depth-1">
-                                                            <li data-graphql="0" data-item-id="1103" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-post">
-                                                                <a href="https://ncmaz.chisnghiax.com/hello-world/"
-                                                                    className="menu-link sub-menu-link">Post Gallery</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="1101" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-post">
-                                                                <a href="https://ncmaz.chisnghiax.com/aspernatur-deserunt-repudiandae-provident-assumenda-odit-voluptas/"
-                                                                    className="menu-link sub-menu-link">Post Video</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="1100" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-post">
-                                                                <a href="https://ncmaz.chisnghiax.com/velit-at-dolorem-dignissimos/"
-                                                                    className="menu-link sub-menu-link">Post Audio</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="1112" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-post">
-                                                                <a href="https://ncmaz.chisnghiax.com/sint-est-autem-quibusdam-asperiores-occaecati-voluptatem/"
-                                                                    className="menu-link sub-menu-link">Post style 3</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="1107" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-post">
-                                                                <a href="https://ncmaz.chisnghiax.com/eos-adipisci-dolorem-quia-qui/"
-                                                                    className="menu-link sub-menu-link">Post Style 2</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="1980" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-post">
-                                                                <a href="https://ncmaz.chisnghiax.com/quo-illum-et-alias-ea-fugit/"
-                                                                    className="menu-link sub-menu-link">Single has sidebar</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="2073" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-post">
-                                                                <a href="https://ncmaz.chisnghiax.com/post-contain-ncmaz-gutenberg-blocks/"
-                                                                    className="menu-link sub-menu-link">Has Gutenberg blocks</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li data-graphql="0" data-item-id="617" data-is-megamenu="false"
-                                                    className="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                                    <a href="#" className="menu-link main-menu-link">Pages</a>
-                                                    <div className="sub-menu-wrap">
-                                                        <ul className="sub-menu menu-odd  menu-depth-1">
-                                                            <li data-graphql="0" data-item-id="845" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-taxonomy menu-item-object-category">
-                                                                <a href="https://ncmaz.chisnghiax.com/category/videos/"
-                                                                    className="menu-link sub-menu-link">Archive Page</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="846" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-custom menu-item-object-custom">
-                                                                <a href="https://ncmaz.chisnghiax.com/author/jaren-nader/"
-                                                                    className="menu-link sub-menu-link">Author Page</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="624" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-custom menu-item-object-custom">
-                                                                <a href="https://ncmaz.chisnghiax.com/?s=Me"
-                                                                    className="menu-link sub-menu-link">Search page</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="3062" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 font-semibold menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-                                                                <a href="https://ncmaz.chisnghiax.com/shop/"
-                                                                    className="menu-link sub-menu-link">Shop</a>
-                                                                <div className="sub-menu-wrap">
-                                                                    <ul className="sub-menu menu-even sub-sub-menu menu-depth-2">
-                                                                        <li data-graphql="0" data-item-id="3705"
-                                                                            data-is-megamenu="false"
-                                                                            className="sub-menu-item sub-sub-menu-item menu-item-even menu-item-depth-2 menu-item menu-item-type-post_type menu-item-object-page">
-                                                                            <a href="https://ncmaz.chisnghiax.com/cart/"
-                                                                                className="menu-link sub-menu-link">Cart</a>
-                                                                        </li>
-                                                                        <li data-graphql="0" data-item-id="3706"
-                                                                            data-is-megamenu="false"
-                                                                            className="sub-menu-item sub-sub-menu-item menu-item-even menu-item-depth-2 menu-item menu-item-type-post_type menu-item-object-page">
-                                                                            <a href="https://ncmaz.chisnghiax.com/checkout/"
-                                                                                className="menu-link sub-menu-link">Checkout</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="618" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-custom menu-item-object-custom">
-                                                                <a href="https://ncmaz.chisnghiax.com/p404"
-                                                                    className="menu-link sub-menu-link">Page 404</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li data-graphql="0" data-item-id="3704" data-is-megamenu="false"
-                                                    className="main-menu-item  menu-item-even menu-item-depth-0 font-semibold underline menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-                                                    <a href="https://ncmaz.chisnghiax.com/ncmaz-submission-post-editor/"
-                                                        className="menu-link main-menu-link">Create post</a>
-                                                    <div className="sub-menu-wrap">
-                                                        <ul className="sub-menu menu-odd  menu-depth-1">
-                                                            <li data-graphql="0" data-item-id="3708" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page">
-                                                                <a href="https://ncmaz.chisnghiax.com/ncmaz-submission-post-editor/"
-                                                                    className="menu-link sub-menu-link">Create Post</a>
-                                                            </li>
-                                                            <li data-graphql="0" data-item-id="2074" data-is-megamenu="false"
-                                                                className="sub-menu-item  menu-item-odd menu-item-depth-1 font-normal menu-item menu-item-type-post_type menu-item-object-page">
-                                                                <a href="https://ncmaz.chisnghiax.com/ncmaz-account/"
-                                                                    className="menu-link sub-menu-link">Edit accout</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
                                             </ul>
                                         </div>
                                     </nav>
@@ -307,7 +196,7 @@ function Header({ user }) {
                                     <div className="block" data-is-react-component="SwitchDarkMode"
                                         data-component-props="{&quot;className&quot;:&quot;h-10 w-10 xl:w-12 xl:h-12&quot;}">
                                         <button
-                                            className="text-2xl md:text-3xl rounded-full text-neutral-700 dark:text-neutral-300 sm:hover:bg-neutral-100 sm:dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center h-10 w-10 xl:w-12 xl:h-12"><span
+                                            className="text-2xl md:text-3xl rounded-full text-neutral-700 dark:text-neutral-300 sm:hover:bg-neutral-100 sm:dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center h-10 w-10 xl:w-12 xl:h-12 switch_mode"><span
                                                 className="sr-only">Enable dark mode</span><svg xmlns="http://www.w3.org/2000/svg"
                                                     fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"
                                                     aria-hidden="true" data-slot="icon" className="w-6 h-6 sm:w-7 sm:h-7">
